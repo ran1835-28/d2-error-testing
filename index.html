@@ -23,47 +23,47 @@
 
     <!-- TOP HEADER / APP BAR -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[4rem] py-2 flex items-center justify-between flex-wrap gap-y-3">
             
             <!-- LOGO & BRANDING -->
-            <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center shadow-md shadow-emerald-700/20">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse min-w-max">
+                <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center shadow-md shadow-emerald-700/20 shrink-0">
                     <i class="fa-solid fa-book-open text-lg"></i>
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
-                        <h1 data-i18n="headerTitle" class="font-bold text-slate-900 text-lg leading-none tracking-tight">Al-Hikmah Journal</h1>
-                        <span data-i18n="headerBadge" class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider">Wisdom & Heritage</span>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h1 data-i18n="headerTitle" class="font-bold text-slate-900 text-lg leading-none tracking-tight whitespace-nowrap">Al-Hikmah Journal</h1>
+                        <span data-i18n="headerBadge" class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider whitespace-nowrap">Wisdom & Heritage</span>
                     </div>
-                    <p data-i18n="headerSub" class="text-xs text-slate-500 hidden sm:block mt-0.5">Islamic Inscriptions, Prophetic Traditions & Golden Age Discoveries</p>
+                    <p data-i18n="headerSub" class="text-xs text-slate-500 hidden xl:block mt-0.5">Islamic Inscriptions, Prophetic Traditions & Golden Age Discoveries</p>
                 </div>
             </div>
 
             <!-- HEADER ACTIONS & METRICS -->
-            <div class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
+            <div class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse flex-wrap gap-y-2">
                 
                 <!-- STREAK COUNTER -->
-                <div class="hidden md:flex items-center space-x-1.5 rtl:space-x-reverse bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg text-amber-800 text-xs font-semibold">
+                <div class="hidden md:flex items-center space-x-1.5 rtl:space-x-reverse bg-amber-50 border border-amber-200 px-2.5 py-1.5 rounded-lg text-amber-800 text-xs font-semibold whitespace-nowrap">
                     <i class="fa-solid fa-fire text-amber-500"></i>
                     <span id="streakCountText">3</span>
                     <span data-i18n="streakDays" class="text-[11px] font-normal text-amber-700">Day Streak</span>
                 </div>
 
                 <!-- ARCHITECTURE INSPECTOR -->
-                <button onclick="openArchModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors flex items-center gap-1.5">
+                <button onclick="openArchModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors flex items-center gap-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-layer-group text-emerald-600"></i>
                     <span data-i18n="btnArch3Layer" class="hidden sm:inline">3-Layer Arch</span>
                 </button>
 
                 <!-- SAVED MANUSCRIPTS -->
-                <button id="openFavoritesBtn" onclick="openFavoritesModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors flex items-center gap-2 relative">
+                <button id="openFavoritesBtn" onclick="openFavoritesModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors flex items-center gap-2 relative whitespace-nowrap">
                     <i class="fa-regular fa-bookmark text-emerald-600"></i>
                     <span data-i18n="btnSavedMs" class="hidden sm:inline">Saved</span>
                     <span id="favCountBadge" class="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
                 </button>
 
                 <!-- SESSION LEDGER AUDIT -->
-                <button id="openHistoryBtn" onclick="openHistoryModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors flex items-center gap-1.5">
+                <button id="openHistoryBtn" onclick="openHistoryModal()" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors flex items-center gap-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-clock-rotate-left text-amber-600"></i>
                     <span data-i18n="btnSessionLedger" class="hidden sm:inline">Ledger</span>
                 </button>
@@ -177,7 +177,7 @@
                         </button>
                     </div>
 
-                    <!-- ARABIC TEXT (STRICTLY PRESERVED IN CLASSICAL ARABIC & MARKED UNTRANSLATED) -->
+                    <!-- ARABIC TEXT -->
                     <div id="inscriptionArabic" class="notranslate text-right text-2xl leading-loose font-amiri text-slate-900 font-bold p-3 bg-amber-50/40 rounded-xl border border-amber-100/60" translate="no" dir="rtl">
                         يَرْفَعِ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ
                     </div>
