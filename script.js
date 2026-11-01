@@ -25,7 +25,7 @@ window.tailwind.config = {
     }
 };
 
-// TRANSLATION DICTIONARY (FULLY LOCALIZED INCLUDING MODALS & FOOTER)
+// TRANSLATION DICTIONARY
 const translations = {
     en: {
         headerTitle: "Al-Hikmah Journal",
@@ -868,7 +868,7 @@ const translations = {
 
         toastNewPrompt: "نیا تفکری سوال تیار کیا گیا!",
         toastCopiedPrompt: "تفکری سوال کلپ بورڈ پر کاپی ہو گیا!",
-        toastCopiedText: "متن اور حوالہ کلپ بورڈ پر کاپی ہو گئے!",
+        toastCopiedText: "متن اور حوالہ کلپ بورڈ پر کاپی ہو گئے۔",
         toastSaved: "آئٹم آپ کی مخطوطات لائبریری میں محفوظ ہو گیا!",
         toastRemoved: "آئٹم محفوظ شدہ مخطوطات سے ہٹا دیا گیا۔",
         toastLogsCleared: "سیشن آڈٹ لیجر صاف کر دیا گیا۔",
@@ -999,7 +999,7 @@ const quizQuestionsDict = {
     ]
 };
 
-// EXTENDED KNOWLEDGE DATABASE (QUR'ANIC VERSES KEPT STRICTLY IN ARABIC)
+// EXTENDED KNOWLEDGE DATABASE
 const knowledgeDatabase = [
     {
         id: "pair-1",
@@ -1011,7 +1011,7 @@ const knowledgeDatabase = [
                 en: '"Allah will raise those who have believed among you and those who were given knowledge, by degrees."',
                 ar: '"يَرْفَعِ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ"',
                 es: '"Dios elevará en grados a quienes hayan creído entre vosotros y a quienes hayan recibido el conocimiento."',
-                fr: '"Allah élèvera en degrés ceux d'entre vous qui ont cru et ceux qui ont reçu la science."',
+                fr: '"Allah élèvera en degrés ceux d\'entre vous qui ont cru et ceux qui ont reçu la science."',
                 de: '"Allah wird diejenigen von euch, die glauben, und diejenigen, denen das Wissen gegeben wurde, um Rangstufen erhöhen."',
                 tr: '"Allah, içinizden iman edenlerin ve kendilerine ilim verilenlerin derecelerini yükseltir."',
                 ur: '"اللہ تم میں سے ان لوگوں کے درجات بلند فرمائے گا جو ایمان لائے اور جنہیں علم عطا کیا گیا۔"'
@@ -1091,7 +1091,7 @@ const knowledgeDatabase = [
                 en: '"Indeed, in the creation of the heavens and the earth and the alternation of night and day are signs for those of understanding."',
                 ar: '"إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالأَرْضِ وَاخْتِلافِ اللَّيْلِ وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الأَلْبَابِ"',
                 es: '"En la creación de los cielos y de la tierra y en la sucesión de la noche y el día hay señales para los dotados de intelecto."',
-                fr: '"Dans la création des cieux et de la terre et dans l'alternance de la nuit et du jour, il y a des signes pour les doués d'intelligence."',
+                fr: '"Dans la création des cieux et de la terre et dans l\'alternance de la nuit et du jour, il y a des signes pour les doués d\'intelligence."',
                 de: '"In der Schöpfung der Himmel und der Erde und im Unterschied von Nacht und Tag sind wahrlich Zeichen für die Verständigen."',
                 tr: '"Göklerin ve yerin yaratılışında, gece ile gündüzün birbiri ardından gelişinde akıl sahipleri için ibretler vardır."',
                 ur: '"بے شک آسمانوں اور زمین کی تخلیق اور رات و دن کے بدلنے میں عقل مندوں کے لیے نشانیاں ہیں۔"'
@@ -1190,7 +1190,7 @@ function filterEra(era, btn) {
     retrieveKnowledgePair();
 }
 
-// KNOWLEDGE RETRIEVAL ENGINE (STRICTLY PRESERVES ARABIC FOR QURANIC VERSES)
+// KNOWLEDGE RETRIEVAL ENGINE
 function retrieveKnowledgePair() {
     const domainSelectEl = document.getElementById('domainSelect');
     const selectedDomain = domainSelectEl ? domainSelectEl.value : 'all';
@@ -1281,6 +1281,7 @@ function updateEquilibriumBar() {
 
 // TEXT TO SPEECH (TTS)
 function speakText(type) {
+    if (!currentPair) return;
     const text = type === 'inscription' ? currentPair.inscription.arabic : currentPair.observation.arabic;
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -1313,6 +1314,7 @@ function copySynthesisPrompt() {
 
 // FAVORITES / SAVED MANUSCRIPTS MANAGEMENT
 function saveCurrentItem(type) {
+    if (!currentPair) return;
     const dict = translations[currentLang] || translations.en;
     let itemToSave;
 
@@ -1411,6 +1413,7 @@ function clearAllFavorites() {
 }
 
 function updateSaveButtonsState() {
+    if (!currentPair) return;
     const inscSaved = favorites.some(f => f.id === currentPair.id + '-insc');
     const obsSaved = favorites.some(f => f.id === currentPair.id + '-obs');
 
@@ -1663,7 +1666,7 @@ function showToast(message) {
     }, 3000);
 }
 
-// EXPLICIT GLOBAL BINDINGS TO ENSURE HTML INLINE EVENT HANDLERS ALWAYS CALL WORKABLE FUNCTIONS
+// EXPLICIT GLOBAL BINDINGS
 window.openArchModal = openArchModal;
 window.closeArchModal = closeArchModal;
 window.openFavoritesModal = openFavoritesModal;
